@@ -1,5 +1,7 @@
-function name(gr, tr, td) {
-  return (gr * 10) + tr + (td + tr);
+function name(gr, tr, td) { 
 }
 
-export default name
+function noname(gr, tr, td) {
+  return (gr * 10) + tr + (td + tr);
+}
+export {name, noname};

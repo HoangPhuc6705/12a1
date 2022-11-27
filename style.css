@@ -78,6 +78,7 @@ body {
   background: none;
   border: 2px solid white;
   border-radius: 5px;
+  transition: 0.3s;
 }
 
 .random button:hover {

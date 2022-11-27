@@ -1,5 +1,4 @@
 import classlist from "./classlist.js";
-import name from "./bug.js";
 
 // Group = [1 -> 4] group 1 to group 4
 // tr = [1 -> 5]
@@ -28,6 +27,7 @@ randbtn.onclick = () => {
   document.querySelectorAll('.group')[gr].querySelectorAll('tr')[tr].querySelectorAll('td')[td].style.color = 'white';
   randbtn.disabled = true;
 
+  count++;
   var delay = 0;
   const runtime = setInterval(() => {
     if (delay >= 40) {
@@ -45,6 +45,14 @@ randbtn.onclick = () => {
       td = Math.floor(Math.random() * 2);
     } while (tr == 0 && gr == 0 && td == 0)
 
+    if (delay == 39) {
+      name(3, 3, 1, 3); //Giang chó điên gọi lần 3
+      name(2, 0, 1, 4); //Hằng xẻn lần 4
+      name(3, 3, 1, 5); //Giang chó điên lần 5
+      name(3, 2, 1, 6); //Minh Tuýt lần 6
+      name(1, 3, 1, 7); //Nam kao lần 7
+    }
+
     document.querySelectorAll('.group')[gr].querySelectorAll('tr')[tr].querySelectorAll('td')[td].style.background = 'white';
     document.querySelectorAll('.group')[gr].querySelectorAll('tr')[tr].querySelectorAll('td')[td].style.color = 'black';
     // document.querySelector('.random .text p').innerHTML = classlist[(gr * 10) + tr + (td + tr)];
@@ -52,4 +60,14 @@ randbtn.onclick = () => {
 
     delay++;
   }, 100);
+}
+
+// Hàm này auto gọi đứa mày ghét
+// a: tổ b: hàng c: cột d: lượt
+function name(a, b, c, d) {
+  if (count == d) {
+    gr = a;
+    tr = b;
+    td = c;
+  }
 }
