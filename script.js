@@ -47,7 +47,8 @@ randbtn.onclick = () => {
 
     document.querySelectorAll('.group')[gr].querySelectorAll('tr')[tr].querySelectorAll('td')[td].style.background = 'white';
     document.querySelectorAll('.group')[gr].querySelectorAll('tr')[tr].querySelectorAll('td')[td].style.color = 'black';
-    document.querySelector('.random .text p').innerHTML = classlist[(gr * 10) + tr + (td + tr)];
+    // document.querySelector('.random .text p').innerHTML = classlist[(gr * 10) + tr + (td + tr)];
+    document.querySelector('h1').innerHTML = classlist[(gr * 10) + tr + (td + tr)];
 
     delay++;
   }, 100);
