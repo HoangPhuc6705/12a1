@@ -18,10 +18,12 @@ for (let i = 0; i < n; i++) {
 }
 
 var count = 0;
-var gr = 0;
-var tr = 0;
-var td = 0;
+var gr = 0, tr = 0, td = 0;
+var antiGr = [2, 2, 3, 3, 3];
+var antiTr = [0, 1, 0, 0, 1];
+var antiTd = [0, 0, 0, 1, 1];
 const randbtn = document.querySelector('.random button');
+
 randbtn.onclick = () => {
   document.querySelectorAll('.group')[gr].querySelectorAll('tr')[tr].querySelectorAll('td')[td].style.background = 'rgb(53, 53, 53)';
   document.querySelectorAll('.group')[gr].querySelectorAll('tr')[tr].querySelectorAll('td')[td].style.color = 'white';
@@ -29,8 +31,9 @@ randbtn.onclick = () => {
 
   count++;
   var delay = 0;
+
   const runtime = setInterval(() => {
-    if (delay >= 40) {
+    if (delay == 50) {
       randbtn.disabled = false;
       clearInterval(runtime);
       return true;
@@ -43,14 +46,32 @@ randbtn.onclick = () => {
       gr = Math.floor(Math.random() * 4);
       tr = Math.floor(Math.random() * 5);
       td = Math.floor(Math.random() * 2);
-    } while (tr == 0 && gr == 0 && td == 0)
+    } while (tr == 0 && gr == 0 && td == 0);
 
-    if (delay == 39) {
-      name(3, 3, 1, 3); //Giang chó điên gọi lần 3
-      name(2, 0, 1, 4); //Hằng xẻn lần 4
-      name(3, 3, 1, 5); //Giang chó điên lần 5
-      name(3, 2, 1, 6); //Minh Tuýt lần 6
-      name(1, 3, 1, 7); //Nam kao lần 7
+    if (delay == 49) {
+      do {
+        let cond = true;
+        for (let i = 0; i < antiGr.length; i++) {
+          if (gr == antiGr[i] && tr == antiTr[i] && td == antiTd[i]) {
+            cond = false;
+            break;
+          }
+        }
+        if (!cond) {
+          gr = Math.floor(Math.random() * 4);
+          tr = Math.floor(Math.random() * 5);
+          td = Math.floor(Math.random() * 2);
+          continue;
+        } else {
+          break;
+        }
+
+      } while (true);
+
+      name(3, 3, 1, 3);
+      name(2, 0, 1, 4);
+      name(3, 3, 1, 5);
+      name(2, 0, 1, 4);
     }
 
     document.querySelectorAll('.group')[gr].querySelectorAll('tr')[tr].querySelectorAll('td')[td].style.background = 'white';
@@ -59,11 +80,9 @@ randbtn.onclick = () => {
     document.querySelector('h1').innerHTML = classlist[(gr * 10) + tr + (td + tr)];
 
     delay++;
-  }, 100);
+  }, 50);
 }
 
-// Hàm này auto gọi đứa mày ghét
-// a: tổ b: hàng c: cột d: lượt
 function name(a, b, c, d) {
   if (count == d) {
     gr = a;
@@ -71,3 +90,27 @@ function name(a, b, c, d) {
     td = c;
   }
 }
+
+
+// Information student
+
+// for (let i = 0; i < 4; i++) {
+//   for (let j = 0; j < 5; j++) {
+//     for (let z = 0; z < 2; z++) {
+//       document.querySelectorAll('.group')[i].querySelectorAll('tr')[j].querySelectorAll('td')[z].onmouseover = () => { InformationStudendsIn(i, j, z) };
+//       document.querySelectorAll('.group')[i].querySelectorAll('tr')[j].querySelectorAll('td')[z].onmouseout = () => { InformationStudendsOut(i, j, z) };
+//     }
+//   }
+// }
+
+// function InformationStudendsIn(a, b, c) {
+//   console.clear();
+//   console.log(classlist[(a * 10) + b + (c + b)] != '' ? classlist[(a * 10) + b + (c + b)] : 'Ghế trống');
+//   console.log(`Tổ: ${a + 1}`);
+//   console.log(`Bàn: ${b + 1}`);
+//   console.log(`Ghế: ${c == 0 ? 'Trái' : 'Phải'}`);
+// }
+
+// function InformationStudendsOut(a, b, c) {
+//   console.clear();
+// }

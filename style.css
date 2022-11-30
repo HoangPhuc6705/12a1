@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap');
+@font-face {
+  font-family: Quicksand;
+  src: url(./Quicksand/static/Quicksand-Bold.ttf);
+  font-weight: bold;
+}
 
 * {
   margin: 0;
@@ -19,6 +24,7 @@ body {
 }
 
 .title {
+  cursor: context-menu;
   text-transform: uppercase;
   display: flex;
   justify-content: center;
@@ -38,7 +44,7 @@ body {
 }
 
 .group tr td {
-  cursor: pointer;
+  cursor: context-menu;
   width: 200px;
   height: 100px;
   border: 2px solid white;
@@ -46,7 +52,7 @@ body {
   text-align: center;
   padding: 10px;
   font-size: 18px;
-  transition: 0.3s;
+  /* transition: 0.3s; */
 }
 
 .random {
@@ -78,12 +84,10 @@ body {
   background: none;
   border: 2px solid white;
   border-radius: 5px;
-  transition: 0.3s;
 }
 
-.random button:hover {
-  background: white;
-  color: black;
+.random button:active {
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .cp {
